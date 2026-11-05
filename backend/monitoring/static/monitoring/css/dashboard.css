@@ -858,3 +858,15 @@ h1 {
   overflow-x: auto;
   max-width: 640px;
 }
+
+
+/* --- Speedometer gadget --- */
+.speedo { display: block; width: 100%; max-width: 240px; margin: 0.25rem auto 0; }
+.speedo-track, .speedo-fill { fill: none; stroke-width: 14; stroke-linecap: round; }
+.speedo-track { stroke: var(--meter-track); }
+.speedo-fill { stroke: #2f80ed; stroke-dasharray: 0 100; transition: stroke-dasharray 0.4s ease; }
+.speedo-needle { stroke: currentColor; stroke-width: 3; stroke-linecap: round;
+  transform: rotate(-90deg); transform-origin: 100px 100px; transition: transform 0.4s ease; }
+.speedo-hub { fill: currentColor; }
+.speedo-scale { display: flex; justify-content: space-between; max-width: 240px;
+  margin: 0 auto; font-size: 0.75rem; opacity: 0.7; }

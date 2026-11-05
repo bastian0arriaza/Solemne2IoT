@@ -185,6 +185,15 @@
           fill.style.width = `${pct}%`;
         }
 
+        if (widgetType === "speedometer") {
+          const gauge = card.querySelector('[data-role="speedo"]');
+          const min = parseFloat(gauge.dataset.min);
+          const max = parseFloat(gauge.dataset.max);
+          const ratio = max > min ? Math.max(0, Math.min(1, (s.value - min) / (max - min))) : 0;
+          gauge.querySelector('[data-role="speedo-needle"]').style.transform = `rotate(${-90 + ratio * 180}deg)`;
+          gauge.querySelector('[data-role="speedo-fill"]').style.strokeDasharray = `${ratio * 100} 100`;
+        }
+
         if (widgetType === "led") {
           const dot = card.querySelector('[data-role="led-dot"]');
           const threshold = parseFloat(dot.dataset.threshold);

@@ -233,6 +233,7 @@ class Widget(models.Model):
     TYPE_LINE_CHART = "line_chart"
     TYPE_NUMERIC = "numeric"
     TYPE_METER = "meter"
+    TYPE_SPEEDOMETER = "speedometer"
     TYPE_LED = "led"
     TYPE_BUTTON = "button"
     TYPE_SLIDER = "slider"
@@ -240,6 +241,7 @@ class Widget(models.Model):
         (TYPE_LINE_CHART, "Gráfico de línea"),
         (TYPE_NUMERIC, "Valor numérico"),
         (TYPE_METER, "Medidor (barra)"),
+        (TYPE_SPEEDOMETER, "Velocímetro"),
         (TYPE_LED, "Indicador LED"),
         (TYPE_BUTTON, "Botón (control)"),
         (TYPE_SLIDER, "Slider (control)"),
@@ -249,8 +251,8 @@ class Widget(models.Model):
     sensor = models.OneToOneField(Sensor, related_name="widget", on_delete=models.CASCADE)
     widget_type = models.CharField(max_length=20, choices=TYPE_CHOICES, default=TYPE_LINE_CHART)
 
-    min_value = models.FloatField(default=0, help_text="Usado por Medidor y Slider.")
-    max_value = models.FloatField(default=100, help_text="Usado por Medidor y Slider.")
+    min_value = models.FloatField(default=0, help_text="Usado por Medidor, Velocímetro y Slider.")
+    max_value = models.FloatField(default=100, help_text="Usado por Medidor, Velocímetro y Slider.")
     led_on_threshold = models.FloatField(
         default=1,
         help_text=(
